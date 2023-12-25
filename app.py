@@ -1,6 +1,7 @@
 # Q&A Chatbot
 #from langchain.llms import OpenAI
 
+
 from dotenv import load_dotenv
 
 load_dotenv()  # take environment variables from .env.
@@ -9,7 +10,7 @@ import streamlit as st
 import os
 import pathlib
 import textwrap
-import IPython
+import ipython
 
 import google.generativeai as genai
 
@@ -17,9 +18,11 @@ from IPython.display import display
 from IPython.display import Markdown
 
 
+
 def to_markdown(text):
-  text = text.replace('•', '  *')
-  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+    text = text.replace('•', '  *')
+    return st.markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
+
 
 os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -48,4 +51,4 @@ if submit:
     
     response=get_gemini_response(input)
     st.subheader("The Response is")
-    st.write(response)
+    to_markdown(response)
