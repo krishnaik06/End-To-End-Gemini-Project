@@ -9,6 +9,7 @@ import streamlit as st
 import os
 import pathlib
 import textwrap
+import IPython
 
 import google.generativeai as genai
 
